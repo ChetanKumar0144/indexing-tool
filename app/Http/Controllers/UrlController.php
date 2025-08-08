@@ -42,11 +42,12 @@ class UrlController extends Controller
             try {
                 $fullUrl = rtrim($website->domain, '/') . '/' . ltrim($path, '/');
 
-                GoogleIndexing::indexUrl(
+                $data = GoogleIndexing::indexUrl(
                     storage_path("app/{$website->service_account_file}"),
                     $fullUrl
                 );
 
+                dd($data);
                 $url->status = 'success';
                 $url->indexed_at = now();
             } catch (\Exception $e) {
