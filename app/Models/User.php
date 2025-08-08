@@ -42,4 +42,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function websites()
+    {
+        return $this->hasMany(Website::class);
+    }
+
 }
